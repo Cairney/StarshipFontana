@@ -1,4 +1,5 @@
-# Starship Fontana #Starship
+# Starship Fontana #
+
 This is an example C++ application using the SDL library.
 It tries to be as nicely C++11 as possible but do keep in
 mind that SDL is written in C and, at some stage, you have

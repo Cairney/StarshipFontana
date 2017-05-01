@@ -52,7 +52,7 @@ SFError InitGraphics() {
     throw SF_ERROR_VIDEOMODE;
   }
 
-  SDL_SetRenderDrawColor(g_renderer, 255, 255, 255, 255);
+  SDL_SetRenderDrawColor(g_renderer, 0, 0, 0, 0);
 
   return SF_ERROR_NONE;
 }

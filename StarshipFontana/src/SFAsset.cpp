@@ -18,6 +18,9 @@ SFAsset::SFAsset(SFASSETTYPE type, std::shared_ptr<SFWindow> window): type(type)
   case SFASSET_COIN:
     sprite = IMG_LoadTexture(sf_window->getRenderer(), "assets/coin.png");
     break;
+   case SFASSET_BARRIER:
+    sprite = IMG_LoadTexture(sf_window->getRenderer(), "assets/barrier.png");
+    break;
   }
 
   if(!sprite) {
@@ -132,7 +135,7 @@ void SFAsset::GoSouth() {
     bbox->centre = make_shared<Vector2>(c);
   }
 }
-bool SFAsset::CollidesWith(shared_ptr<SFAsset> other ) {
+bool SFAsset::CollidesWith(shared_ptr<SFAsset> other) {
   return bbox->CollidesWith(other->bbox);
 }
 

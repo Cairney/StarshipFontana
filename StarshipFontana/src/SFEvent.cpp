@@ -19,11 +19,11 @@ SFEvent::SFEvent(const SDL_Event & event) {
     case SDLK_RIGHT:
       code = SFEVENT_PLAYER_RIGHT;
       break;
-    case SDLK_UP:
-      code = SFEVENT_PLAYER_UP;	
+case SDLK_UP:
+      code = SFEVENT_PLAYER_UP;
       break;
-    case SDLK_DOWN:
-      code = SFEVENT_PLAYER_DOWN;	
+case SDLK_DOWN:
+      code = SFEVENT_PLAYER_DOWN;
       break;
     case SDLK_SPACE:
       code = SFEVENT_FIRE;
