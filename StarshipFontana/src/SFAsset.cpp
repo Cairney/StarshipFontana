@@ -18,9 +18,19 @@ SFAsset::SFAsset(SFASSETTYPE type, std::shared_ptr<SFWindow> window): type(type)
   case SFASSET_COIN:
     sprite = IMG_LoadTexture(sf_window->getRenderer(), "assets/coin.png");
     break;
+  case SFASSET_METEOR:
+    sprite = IMG_LoadTexture(sf_window->getRenderer(), "assets/meteor.png");
+    break;
    case SFASSET_BARRIER:
     sprite = IMG_LoadTexture(sf_window->getRenderer(), "assets/barrier.png");
     break;
+   case SFASSET_MOTHER:
+    sprite = IMG_LoadTexture(sf_window->getRenderer(), "assets/mother.png");
+    break;
+   case SFASSET_TRIP:
+    sprite = IMG_LoadTexture(sf_window->getRenderer(), "assets/trip.png");
+    break;	 
+		
   }
 
   if(!sprite) {
@@ -114,7 +124,7 @@ void SFAsset::GoEast() {
     bbox->centre = make_shared<Vector2>(c);
   }
 }
-
+// This makes the player go up and it has to be placed in the header and bound to a key, this can be repurposed so that it can go down. However this goes on the X-axis rather than the Y-axis.
 void SFAsset::GoNorth() {
  int w, h;
   SDL_GetRendererOutputSize(sf_window->getRenderer(), &w, &h);
@@ -125,7 +135,7 @@ void SFAsset::GoNorth() {
 
  }
 }
-
+// This makes the player go south or in other words down, it needed to be connect to the keybinds and placed within the header.
 void SFAsset::GoSouth() {
   int w, h;
   SDL_GetRendererOutputSize(sf_window->getRenderer(), &w, &h);
@@ -155,4 +165,10 @@ void SFAsset::HandleCollision() {
   if(SFASSET_PROJECTILE == type || SFASSET_ALIEN == type) {
     SetNotAlive();
   }
+{
+  if(SFASSET_PROJECTILE == type || SFASSET_MOTHER == type) {
+    SetNotAlive();
+  }
 }
+}
+

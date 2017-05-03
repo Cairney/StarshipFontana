@@ -33,11 +33,17 @@ private:
   shared_ptr<SFWindow>       sf_window;
 
   shared_ptr<SFAsset>        player;
+  shared_ptr<SFAsset>        mother;
+  shared_ptr<SFAsset>        trip;
   shared_ptr<SFBoundingBox>  app_box;
   list<shared_ptr<SFAsset> > projectiles;
   list<shared_ptr<SFAsset> > aliens;
   list<shared_ptr<SFAsset> > coins;
   list<shared_ptr<SFAsset> > barriers;
+  list<shared_ptr<SFAsset> > meteors;
+
+  
   int fire;
+  int Counter;
 };
 #endif
