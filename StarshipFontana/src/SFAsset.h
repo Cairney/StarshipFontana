@@ -34,9 +34,9 @@ public:
   virtual SFAssetId GetId();
   virtual void      OnRender();
   virtual void      GoEast();
-  // virtual void      GoEast2();
+  virtual void      GoEast2();
   virtual void      GoWest();
-  // virtual void      GoWest2();
+  virtual void      GoWest2();
   virtual void      GoNorth();
   virtual void      GoSouth();
   virtual void      SetNotAlive();

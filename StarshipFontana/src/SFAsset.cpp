@@ -9,6 +9,12 @@ SFAsset::SFAsset(SFASSETTYPE type, std::shared_ptr<SFWindow> window): type(type)
   case SFASSET_PLAYER:
     sprite = IMG_LoadTexture(sf_window->getRenderer(), "assets/player.png");
     break;
+    sprite = IMG_LoadTexture(sf_window->getRenderer(), "assets/player2.png");
+    break;
+    sprite = IMG_LoadTexture(sf_window->getRenderer(), "assets/player3.png");
+    break;
+    sprite = IMG_LoadTexture(sf_window->getRenderer(), "assets/player4.png");
+    break;
   case SFASSET_PROJECTILE:
     sprite = IMG_LoadTexture(sf_window->getRenderer(), "assets/projectile.png");
     break;
@@ -111,6 +117,15 @@ void SFAsset::GoWest() {
   if(!(c.getX() < 0)) {
     bbox->centre.reset();
     bbox->centre = make_shared<Vector2>(c);
+    SFASSET_PLAYER:
+    sprite = IMG_LoadTexture(sf_window->getRenderer(), "assets/player4.png");
+  }
+}
+void SFAsset::GoWest2() {
+  Vector2 c = *(bbox->centre) + Vector2(-10.0f, 0.0f);
+  if(!(c.getX() < 0)) {
+    bbox->centre.reset();
+    bbox->centre = make_shared<Vector2>(c);
   }
 }
 
@@ -122,8 +137,21 @@ void SFAsset::GoEast() {
   if(!(c.getX() > w)) {
     bbox->centre.reset();
     bbox->centre = make_shared<Vector2>(c);
+    SFASSET_PLAYER:    
+    sprite = IMG_LoadTexture(sf_window->getRenderer(), "assets/player2.png");
   }
 }
+void SFAsset::GoEast2() {
+  int w, h;
+  SDL_GetRendererOutputSize(sf_window->getRenderer(), &w, &h);
+
+  Vector2 c = *(bbox->centre) + Vector2(10.0f, 0.0f);
+  if(!(c.getX() > w)) {
+    bbox->centre.reset();
+    bbox->centre = make_shared<Vector2>(c);
+  }
+}
+
 // This makes the player go up and it has to be placed in the header and bound to a key, this can be repurposed so that it can go down. However this goes on the X-axis rather than the Y-axis.
 void SFAsset::GoNorth() {
  int w, h;
@@ -132,6 +160,8 @@ void SFAsset::GoNorth() {
   if(!((c.getY()+bbox->extent_y->getY()) > h)) {
     bbox->centre.reset();
     bbox->centre = make_shared<Vector2>(c);
+  SFASSET_PLAYER:
+    sprite = IMG_LoadTexture(sf_window->getRenderer(), "assets/player.png");
 
  }
 }
@@ -143,6 +173,8 @@ void SFAsset::GoSouth() {
   if(!((c.getY()+bbox->extent_y->getY()) > h)) {
     bbox->centre.reset();
     bbox->centre = make_shared<Vector2>(c);
+    SFASSET_PLAYER:
+    sprite = IMG_LoadTexture(sf_window->getRenderer(), "assets/player3.png");
   }
 }
 bool SFAsset::CollidesWith(shared_ptr<SFAsset> other) {

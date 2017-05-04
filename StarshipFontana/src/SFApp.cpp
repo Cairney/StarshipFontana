@@ -20,6 +20,7 @@ SFApp::SFApp(std::shared_ptr<SFWindow> window) : fire(0), is_running(true), sf_w
   mother  = make_shared<SFAsset>(SFASSET_MOTHER, sf_window);
   auto mother_pos = Point2(canvas_h/2, 400);
   mother->SetPosition(mother_pos);
+  mothers.push_back(mother);
 
   const int number_of_aliens = 8;
   for(int i=0; i<number_of_aliens; i++) {
@@ -101,12 +102,12 @@ int SFApp::OnExecute() {
   }
 }
 
-/*int SFApp::Counter(){
+int SFApp::Counter(){
 i++;
-if (i== 1035) {
+if (i== 1033) {
     i = 0;
   }
-}*/
+}
 void SFApp::OnUpdateWorld() {
   // Update projectile positions
   for(auto p: projectiles) {
@@ -116,20 +117,30 @@ void SFApp::OnUpdateWorld() {
   for(auto c: coins) { // I have left it static because it allows the user to fight through a hord of enemeies to go and collect the survivor in the game to win.
     //c->GoNorth();
   }
-/*
+
   // Update enemy positions
-  for(auto a : aliens) {
+  for(auto m : mothers) {
 	Counter();
 	if(i >= 500 && i < 530) {
-        a->GoWest2();
+        m ->GoWest2();
         break;
       }
         if (i >= 1000 && i < 1030) {
-        a->GoEast2();
+        m->GoEast2();
         break;
       }
      }
-*/
+for(auto c : coins) {
+	Counter();
+	if(i >= 500 && i < 530) {
+        c ->GoWest2();
+        break;
+      }
+        if (i >= 1000 && i < 1030) {
+        c->GoEast2();
+        break;
+      }
+     }
  // Detect collisions between Projectile and barriers
   for(auto p : projectiles) {
     for(auto b : barriers) {
@@ -249,7 +260,7 @@ void SFApp::OnRender() {
 trip->OnRender();
   // draw the player
   if(player->IsAlive()) {player->OnRender();}
-
+ 
   // Prints the projectiles on the screen.
   for(auto p: projectiles) {
     if(p->IsAlive()) {p->OnRender();}

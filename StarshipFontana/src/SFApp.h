@@ -25,7 +25,7 @@ public:
   int     OnExecute();
   void    OnUpdateWorld();
   void    OnRender();
-
+  int     Counter();
   void    FireProjectile();
 private:
   bool                    is_running;
@@ -41,9 +41,10 @@ private:
   list<shared_ptr<SFAsset> > coins;
   list<shared_ptr<SFAsset> > barriers;
   list<shared_ptr<SFAsset> > meteors;
+  list<shared_ptr<SFAsset> > mothers;
 
   
   int fire;
-  int Counter;
+ 
 };
 #endif

@@ -25,7 +25,7 @@ public:
   int     OnExecute();
   void    OnUpdateWorld();
   void    OnRender();
-
+  int     Counter();
   void    FireProjectile();
 private:
   bool                    is_running;
@@ -44,5 +44,6 @@ private:
 
   
   int fire;
+ 
 };
 #endif
